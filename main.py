@@ -3,6 +3,7 @@ from sqlite3 import Error
 import tkinter as tk
 from glob import glob
 
+ 
 def create(obj):
     db = obj.e.get()
     
@@ -30,3 +31,19 @@ class Window:
         self.entry()
         self.button()
         self.listbox()
+
+    def label(self):
+        self.l = tk.Label(self.win, text="Crear DB [inserte nombre]")
+        self.l.pack()
+
+    def entry(self):
+        self.db = tk.StringVar()
+        self.e = tk.Entry(self.win, textvariable=self.db)
+        self.e.pack()
+
+    def button():
+        self.b = tk.Button(self.win, text="Crear DB", command= lambda: create(self))
+        self.b.pack()
+    
+    def listbox():
+        pass     
