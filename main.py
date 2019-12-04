@@ -46,4 +46,12 @@ class Window:
         self.b.pack()
     
     def listbox():
-        pass     
+        self.lb = tk.Listbox(self.win)
+        self.lb.pack()
+        self.show_db()
+
+    def show_db():
+        for file in glob("*.db"):
+            self.lb.insert(tk.END, file)
+
+
