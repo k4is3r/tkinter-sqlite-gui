@@ -21,4 +21,12 @@ def create(obj):
         odj.lb.insert(tk.END, db)
         obj.db.set("")
 
- 
+class Window:
+    """ Creando el widget para la wentada"""
+
+    def __init__(self):
+        self.win = tk.Tk()
+        self.label()
+        self.entry()
+        self.button()
+        self.listbox()
