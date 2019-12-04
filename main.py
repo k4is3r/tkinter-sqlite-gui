@@ -10,7 +10,7 @@ class App:
     def __init__(self, root):
         self.root = root
         #creating the label for name DB
-        self.l = tk.Label(self.win, text="Crear DB [inserte nombre]")
+        self.l = tk.Label(self.root, text="Crear DB [inserte nombre]")
         self.l.pack()
         #Setting the var
         self.e_string_var = tk.StringVar()
@@ -20,10 +20,10 @@ class App:
         self.b = tk.Button(
 			self.root,
 			text="Crear DB",
-			command= lambda: self.mk_db(self))
+			command= lambda: self.mk_db())
         self.b.pack()
         #Setting the list box for show the bd created
-        self.lb = tk.Listbox(self.win)
+        self.lb = tk.Listbox(self.root)
         self.lb.pack()
         self.show_db()
     #funtion to create the DB
