@@ -12,4 +12,13 @@ def create(obj):
         db = db + ".db"
     try:
         conn = lite.connect(db)
-        return conn 
+        return conn
+    except Error as e:
+        print(e)
+
+    finally:
+        conn.close()
+        odj.lb.insert(tk.END, db)
+        obj.db.set("")
+
+ 
