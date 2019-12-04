@@ -97,6 +97,7 @@ class App:
         )
         self.btb.pack()
 
+
     def mk_db(self):
         db = self.e.get()
         if db.endswith(".db"):
@@ -105,19 +106,35 @@ class App:
             db = db + ".db"
         try:
             conn = lite.connect(db)
-            self.lb.insert(tk.END, db)
-            self.e_string_var.set("")
+            if db in self.lb.get(0, tk.END):
+                pass
+            else:
+                self.lb.insert(tk.END, db)
             return conn
         except Error as e:
             print(e)
         finally:
+            self.db.set("")
             conn.close()
-    #Funtion to shwo DB in the listbox
+
     def show_db(self):
         for file in glob("*.db"):
             self.lb.insert(tk.END, file)
 
+    def mk_fl(self):
+        self.fields.append(self.efl.get())
+        self.vfl.set("")
+
+    def mk_tb(self, dbn, tbn):
+        self.conn = lite.connect(dbn.get())
+        self.cur = self.conn.cursor()
+        self.fields = "".join(self.fields)
+        self.cur.execute("""Crear tabla {} ({});""".format(tbn,self.fields))
+        self.fields = []
+        self.conn.close()
+
+
 
 root = tk.Tk()
-app = App(root)
+win  = App(root)
 root.mainloop()
