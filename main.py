@@ -22,7 +22,7 @@ class App:
 			text="Crear DB",
 			command= lambda: self.mk_db(self))
         self.b.pack()
-        #Setting the list box for show de bd creater
+        #Setting the list box for show the bd created
         self.lb = tk.Listbox(self.win)
         self.lb.pack()
         self.show_db()
@@ -42,5 +42,12 @@ class App:
             print(e)
         finally:
             conn.close()
+    #Funtion to shwo DB in the listbox
+    def show_db(self):
+        for file in glob("*.db"):
+            self.lb.insert(tk.END, file)
 
-win = Window()
+
+root = tk.Tk()
+app = App(root)
+root.mainloop()
