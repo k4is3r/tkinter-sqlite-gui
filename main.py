@@ -59,7 +59,43 @@ class App:
             self.root,
             text="Ingresa nombre para Tabla")
         self.ltbname.pack()
-        
+        self.tbn = tk.StringVar()
+        self.etb = tk.Entry(
+            self.root,
+            textvariable= self.tbn
+        )
+        self.etb.pack()
+
+    def fields_widgets(self):
+        self.lflname = tk.Label(
+            self.root,
+            text="""
+            Ingrese los nombres y tipos de los campos
+            seguidos por una coma, uno por uno selecionando
+            uno por cada campo
+            """
+        )
+        self.lflname.pack()
+        self.vfl = tk.StringVar()
+        self.efl = tk.Entry(
+            self.root,
+            textvariable= self.vfl
+        )
+        self.efl.pack()
+        self.bfl = tk.Button(
+            self.root,
+            text="Crear campo",
+            command= lambda : self.mk_fl()
+        )
+        self.bfl.pack()
+
+    def btn_create_table(self):
+        self.btb = tk.Button(
+            self.root,
+            text="Crear Tabla",
+            command = lambda : self.mk_tb(self.dbn, self.tbn)
+        )
+        self.btb.pack()
 
     def mk_db(self):
         db = self.e.get()
