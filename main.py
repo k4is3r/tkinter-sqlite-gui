@@ -6,6 +6,7 @@ from glob import glob
  
 class App:
     """ Creando el widget para la wentada"""
+    
     def __int__(self, root):
         self.fields =[]
         self.root = root
@@ -136,5 +137,5 @@ class App:
 
 
 root = tk.Tk()
-win  = App(root)
+app  = App(root)
 root.mainloop()
