@@ -19,7 +19,7 @@ def create(obj):
 
     finally:
         conn.close()
-        odj.lb.insert(tk.END, db)
+        obj.lb.insert(tk.END, db)
         obj.db.set("")
 
 class Window:
@@ -41,17 +41,19 @@ class Window:
         self.e = tk.Entry(self.win, textvariable=self.db)
         self.e.pack()
 
-    def button():
+    def button(self):
         self.b = tk.Button(self.win, text="Crear DB", command= lambda: create(self))
         self.b.pack()
     
-    def listbox():
+    def listbox(self):
         self.lb = tk.Listbox(self.win)
         self.lb.pack()
         self.show_db()
 
-    def show_db():
+    def show_db(self):
         for file in glob("*.db"):
             self.lb.insert(tk.END, file)
 
+        self.win.mainloop()
 
+win = Window()
